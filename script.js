@@ -169,15 +169,17 @@ function toggleSeleccion() {
   $("#numCoches").attr("disabled", !$("#numCoches").prop("disabled"));
 }
 
+// Función para añadir cada coche al tablón cuando llega a la linea de meta.
 function aniadirAlTablon(coche) {
-  const nombre = $(coche).attr("data-nombre");
+  const nombre = $(coche).data("nombre"); // Obtenemos el nombre del atributo en data
+  //Creamos la etiqueta tr para la tabla
   let etiquetaLinea = `
     <tr class="lineaTabla">
       <td>${posicionTablon++}</td>
       <td>${nombre}</td>
     </tr>
   `;
-  $("#tablaResultadoBody").append(etiquetaLinea);
+  $("#tablaResultadoBody").append(etiquetaLinea); // La añadimos a la tabla
 }
 
 function vaciarTablon() {
@@ -188,6 +190,7 @@ function toggleTablon() {
   $(".resultados").toggleClass("visible");
 }
 
+// Función para mostrar/esconder el mensaje de error
 function toggleError(err = "") {
   $(".errorBox").text(err).addClass("errorBox--visible");
   setTimeout(() => {
