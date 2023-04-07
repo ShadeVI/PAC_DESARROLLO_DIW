@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header id="introHeader" class="header">
+      <div class="header__nav">
+        <button id="carrera" class="btn btn__primario">
+          Llevame a la pista
+        </button>
+      </div>
+      <h1>IlernaGP</h1>
+    </header>
+
+    <div class="carrera">
+      <section class="controllers">
+        <div class="controllers__left">
+          <button id="btnIniciar" class="btn btn__primario">Iniciar</button>
+          <button id="btnReiniciar" class="btn btn__secondario hidden">
+            Reiniciar
+          </button>
+        </div>
+        <div class="controllers__right">
+          <label for="numCoches">Participantes: </label>
+          <select id="numCoches">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+      </section>
+      <div class="errorBox"><span>ERROR</span></div>
+      <section id="pista"></section>
+    </div>
+
+    <section class="resultados">
+      <button id="cerrarTablon" class="btn btn__secondario btn-cerrar">
+        X
+      </button>
+      <table>
+        <thead>
+          <th>Posición</th>
+          <th>Coche</th>
+        </thead>
+        <tbody id="tablaResultadoBody"></tbody>
+      </table>
+    </section>
+
+    <script src="jquery.lib.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

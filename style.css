@@ -1,0 +1,326 @@
+@font-face {
+  font-family: "Poiret";
+  src: url(./assets/fonts/PoiretOne-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bangers";
+  src: url(./assets/fonts/Bangers-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ESTILOS GLOBALES */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: rgb(197, 26, 26);
+  --primary-color-hov: rgb(145, 19, 19);
+  --text-color: rgb(5, 5, 5);
+  --bg-color: rgb(240, 240, 240);
+  --bg-color-soft: rgb(243, 234, 234);
+  --bg-btn: rgba(0, 0, 0, 0.5);
+  --text-error: rgb(224, 0, 0);
+  --bg-error: rgba(224, 0, 0, 0.281);
+  --bg-color-light-gray: rgb(200, 200, 200);
+}
+
+html {
+  font-family: "Poiret";
+  font-size: 20px;
+  font-weight: 600;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 1024px;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Bangers";
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* BOTONES */
+
+.btn {
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  padding: 10px 40px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-color-hov);
+}
+
+.btn__primario {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn:hover.btn__primario {
+  color: white;
+}
+
+.btn__secondario {
+  background-color: var(--primary-color);
+  border: 0px solid white;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+/* -------------- HEADER ------------------- */
+
+.header {
+  width: 100%;
+  height: 100vh;
+  background-color: #383838;
+  background-image: url("./assets/fondos/header-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: top ease-in 1s, opacity ease 2.5s;
+}
+
+.header.moved {
+  top: -100%;
+  opacity: 0;
+}
+
+.header::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0)
+  );
+  z-index: 0;
+}
+
+.header h1 {
+  color: var(--bg-color);
+  text-shadow: 5px 5px 1px var(--bg-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 5px;
+  font-size: 6rem;
+  user-select: none;
+  z-index: 10;
+  animation: ease-in-out 3s infinite alternate logoHeader;
+}
+
+.header .header__nav {
+  height: 80px;
+  background-color: var(--bg-color-soft);
+  display: grid;
+  place-content: center;
+}
+
+.header div a {
+  display: block;
+  color: var(--primary-color);
+  padding-bottom: 3px;
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.75rem;
+}
+
+@keyframes logoHeader {
+  0% {
+    text-shadow: 5px 5px 1px rgb(190, 190, 190);
+  }
+  50% {
+    text-shadow: 5px 5px 5px var(--primary-color);
+    letter-spacing: 15px;
+  }
+  100% {
+    text-shadow: 5px 5px 1px rgb(190, 190, 190);
+  }
+}
+
+/* ------------- MAIN ---------------- */
+
+.carrera {
+  height: 100%;
+  width: 90%;
+  margin: 50px auto;
+  padding-top: 10vh;
+}
+
+/* CONTROLADORES */
+
+.controllers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.controllers__left {
+  display: flex;
+  gap: 30px;
+  flex-grow: 0.2;
+}
+
+.controllers__right select {
+  border: 2px solid var(--text-color);
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+  font-weight: 600;
+}
+
+/* PISTA SECCIÓN */
+
+/* PISTA IMAGEN https://www.freepik.es/vector-premium/pista-carreras-linea-salida-llegada-coche-carreras-carretas-carretera-asfaltada-plantilla-speedway-rapido-concepto-deporte-auto-moto-vista-superior_12614146.htm */
+
+#pista {
+  width: 100%;
+  height: 450px;
+  margin-top: 100px;
+  background-image: url(/assets/fondos/pista.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 450px;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+}
+
+.coche {
+  width: 100px;
+  display: block;
+}
+
+/* TABLÓN RESULTADOS */
+
+.resultados {
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 3rem;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--bg-color);
+  opacity: 0;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+
+.resultados.visible {
+  border: 1px solid var(--text-color);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.btn.btn-cerrar {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.resultados table {
+  width: 50%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.resultados table th:first-child {
+  width: 30%;
+}
+
+.resultados table th {
+  height: 2rem;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.resultados table .lineaTabla {
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.resultados table .lineaTabla td {
+  padding: 0.2rem;
+}
+
+.resultados table .lineaTabla:nth-child(2n-1) {
+  background-color: var(--bg-color-light-gray);
+}
+
+/* ERROR BOX */
+
+.errorBox {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%);
+  display: grid;
+  justify-items: center;
+  width: fit-content;
+  min-width: 50vw;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-error);
+  background-color: var(--bg-error);
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: top ease-out 0.5s;
+}
+
+.errorBox--visible {
+  top: 20px;
+}
