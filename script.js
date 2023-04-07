@@ -140,21 +140,32 @@ function moverCoche(coche) {
   );
 }
 
+// Función para reiniciar la carrera.
 function reiniciar() {
+  // Movemos los coches reseateando el margen izquierdo
   $(".coche")
     .toArray()
     .forEach((coche) => {
       $(coche).stop();
       $(coche).css("margin-left", 0);
     });
-  $("#numCoches").val(1).change();
-  toggleSeleccion();
-  vaciarTablon();
+  // Vaciamos el array de coches
   coches = [];
+  // Impostamos la primera posición del tablón
   posicionTablon = 1;
+  // Cambiamos el valor del select a 1
+  $("#numCoches").val(1).change();
+  // Reactivamos el select
+  toggleSeleccion();
+  //Vaciamos el tablón
+  vaciarTablon();
 }
 
+// Esta función se encarga de abilitar/desabilitar el selector de participantes
 function toggleSeleccion() {
+  // le damos al atributo disabled el valor contrario a lo que tenía antes.
+  // con attr() modificamos el atributo, con prop() obtenemos el valor anterior
+  // a un cambio de estado del DOM.
   $("#numCoches").attr("disabled", !$("#numCoches").prop("disabled"));
 }
 
