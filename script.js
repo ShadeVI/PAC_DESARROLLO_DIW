@@ -1,5 +1,5 @@
 // Definimos las variables
-const lineaDeMeta = $("#pista").width();
+let lineaDeMeta = $("#pista").width();
 let coches = [];
 let posicionTablon = 1;
 
@@ -56,6 +56,12 @@ $(document).ready(function () {
   const nCoches = parseInt($("#numCoches").val());
   coches = crearListaCoches(nCoches);
   pintarCoches(coches);
+});
+
+// Esta función nos permite actualizar la lineaDeMeta cada vez que la ventana
+// es redimensionada.
+$(window).resize(function () {
+  lineaDeMeta = $("#pista").width();
 });
 
 /****************

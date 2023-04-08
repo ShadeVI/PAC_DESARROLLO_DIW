@@ -199,7 +199,6 @@ a {
 .controllers__left {
   display: flex;
   gap: 30px;
-  flex-grow: 0.2;
 }
 
 .controllers__right select {
