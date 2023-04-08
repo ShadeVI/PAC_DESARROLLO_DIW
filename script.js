@@ -40,7 +40,7 @@ $("#numCoches").change(function () {
 
 // Evento que nos lleva a la pista quitando el Header de intro
 $("#carrera").click(function () {
-  $("#introHeader").addClass("moved");
+  $("#introHeader").addClass("header--hidden");
 });
 
 // Evento para cerrar el div que muestra el resultado
@@ -157,8 +157,10 @@ function reiniciar() {
   $("#numCoches").val(1).change();
   // Reactivamos el select
   toggleSeleccion();
-  //Vaciamos el tablón
+  // Vaciamos el tablón
   vaciarTablon();
+  // Si el tablón es visible, lo cerramos
+  if ($(".resultados").hasClass("visible")) toggleTablon();
 }
 
 // Esta función se encarga de abilitar/desabilitar el selector de participantes

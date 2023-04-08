@@ -38,7 +38,6 @@ html {
   font-family: "Poiret";
   font-size: 20px;
   font-weight: 600;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -104,7 +103,8 @@ a {
   width: 100%;
   height: 100vh;
   background-color: #383838;
-  background-image: url("./assets/fondos/header-bg.png");
+  /* https://www.publicdomainpictures.net/es/view-image.php?image=340846&picture=racing-flags-bandera-a-cuadros-de-fondo */
+  background-image: url("./assets/fondos/header-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -116,7 +116,7 @@ a {
   transition: top ease-in 1s, opacity ease 2.5s;
 }
 
-.header.moved {
+.header--hidden {
   top: -100%;
   opacity: 0;
 }
@@ -128,8 +128,8 @@ a {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0)
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.5)
   );
   z-index: 0;
 }
