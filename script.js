@@ -14,8 +14,9 @@ $("#btnIniciar").click(function () {
   // Manejamos eventuales errores
   try {
     iniciarCarrera();
-    // Escondemos el botón iniciar y monstramos los demás
-    esconderBtns({ self: this, ids: ["#btnReiniciar"] });
+    // Escondemos el botón iniciar y monstramos reiniciar
+    $(this).hide();
+    $("#btnReiniciar").show();
     toggleSeleccion();
   } catch (err) {
     // mostramos el error
@@ -25,8 +26,9 @@ $("#btnIniciar").click(function () {
 
 // Añadimos un evento de clic al botón reiniciar
 $("#btnReiniciar").click(function () {
-  // Escondemos el botón reiniciar y monstramos los demás
-  esconderBtns({ self: this, ids: ["#btnIniciar"] });
+  // Escondemos el botón reiniciar y monstramos iniciar
+  $(this).hide();
+  $("#btnIniciar").show();
   reiniciar();
 });
 
@@ -92,14 +94,6 @@ function crearListaCoches(nCoches) {
 // Pintamos los coches en la pista
 function pintarCoches(coches) {
   $("#pista").html(coches.join(""));
-}
-
-// Permite esconder/mostrar los botones
-function esconderBtns({ self, ids }) {
-  $(self).toggle();
-  ids.forEach((element) => {
-    $(element).toggle();
-  });
 }
 
 // Función para iniciar la carrera
@@ -195,7 +189,7 @@ function vaciarTablon() {
 }
 
 function toggleTablon() {
-  $(".resultados").toggleClass("visible");
+  $(".modal.modal-resultados").toggleClass("visible");
 }
 
 // Función para mostrar/esconder el mensaje de error
