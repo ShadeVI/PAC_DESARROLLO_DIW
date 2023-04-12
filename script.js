@@ -103,11 +103,9 @@ function iniciarCarrera() {
     throw new Error("Minimo 2 coches");
   }
   // Seleccionamos cada elemento coche del DOM.
-  $(".coche")
-    .toArray() // Transformamos a Array y lo recorremos con un forEach
-    .forEach((coche) => {
-      moverCoche(coche); // Aquí cada coche empieza a moverse
-    });
+  $(".coche").each(function () {
+    moverCoche(this); // Aquí cada coche empieza a moverse
+  });
 }
 
 function moverCoche(coche) {
@@ -127,10 +125,10 @@ function moverCoche(coche) {
       // la misma funcion. Estamos aplicando recursividad.
       // Si ya el coche ha llegado a la linea de meta, añadimos el coche al tablón
       done: function () {
-        if (parseInt($(coche).css("margin-left")) < lineaDeMeta - 100) {
-          moverCoche(coche);
+        if (parseInt($(this).css("margin-left")) < lineaDeMeta - 100) {
+          moverCoche(this);
         } else {
-          aniadirAlTablon(coche);
+          aniadirAlTablon(this);
           if (posicionTablon === coches.length + 1) {
             toggleTablon();
           }
@@ -143,12 +141,10 @@ function moverCoche(coche) {
 // Función para reiniciar la carrera.
 function reiniciar() {
   // Movemos los coches reseateando el margen izquierdo
-  $(".coche")
-    .toArray()
-    .forEach((coche) => {
-      $(coche).stop();
-      $(coche).css("margin-left", 0);
-    });
+  $(".coche").each(function () {
+    $(this).stop();
+    $(this).css("margin-left", 0);
+  });
   // Vaciamos el array de coches
   coches = [];
   // Impostamos la primera posición del tablón
