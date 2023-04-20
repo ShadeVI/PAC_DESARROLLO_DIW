@@ -79,7 +79,7 @@ function crearListaCoches(nCoches) {
   de callback para modificar cada elemento.
   */
   coches = new Array(nCoches).fill(null).map((_, idx) => {
-    let imgTag = `<img class="coche" src="/assets/img/car${
+    let imgTag = `<img class="coche" src="./assets/img/car${
       idx + 1
     }.png" alt="Coche participante numero ${idx + 1}" data-nombre="coche ${
       idx + 1
@@ -110,7 +110,7 @@ function iniciarCarrera() {
 
 function moverCoche(coche) {
   // Calculamos el desplazamiento
-  const desplazamiento = Math.floor(Math.random() * 11) + 1;
+  const desplazamiento = Math.floor(Math.random() * 10) + 1;
   // Animamos el coche. El primer parametros son los cambios
   // El segundo parametro son las opciones
   $(coche).animate(
@@ -129,6 +129,12 @@ function moverCoche(coche) {
           moverCoche(this);
         } else {
           aniadirAlTablon(this);
+          console.log({
+            posicionTablon,
+            cochesL: coches.length + 1,
+            nombre: $(this).data("nombre"),
+          });
+          posicionTablon++;
           if (posicionTablon === coches.length + 1) {
             toggleTablon();
           }
@@ -156,7 +162,7 @@ function reiniciar() {
   // Vaciamos el tablón
   vaciarTablon();
   // Si el tablón es visible, lo cerramos
-  if ($(".resultados").hasClass("visible")) toggleTablon();
+  if ($(".modal-resultados").hasClass("visible")) toggleTablon();
 }
 
 // Esta función se encarga de abilitar/desabilitar el selector de participantes
@@ -173,7 +179,7 @@ function aniadirAlTablon(coche) {
   //Creamos la etiqueta tr para la tabla
   let etiquetaLinea = `
     <tr class="lineaTabla">
-      <td>${posicionTablon++}</td>
+      <td>${posicionTablon}</td>
       <td>${nombre}</td>
     </tr>
   `;
