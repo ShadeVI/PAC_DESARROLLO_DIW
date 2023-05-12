@@ -153,7 +153,7 @@ function reiniciar() {
   });
   // Vaciamos el array de coches
   coches = [];
-  // Impostamos la primera posición del tablón
+  // Configuramos la primera posición del tablón
   posicionTablon = 1;
   // Cambiamos el valor del select a 1
   $("#numCoches").val(1).change();
