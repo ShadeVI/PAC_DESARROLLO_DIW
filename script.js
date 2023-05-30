@@ -109,36 +109,23 @@ function iniciarCarrera() {
 }
 
 function moverCoche(coche) {
-  // Calculamos el desplazamiento
-  const desplazamiento = Math.floor(Math.random() * 10) + 1;
   // Animamos el coche. El primer parametros son los cambios
   // El segundo parametro son las opciones
   $(coche).animate(
     {
-      marginLeft: `+=${desplazamiento}px`,
+      marginLeft: `+=${lineaDeMeta - coche.width}px`,
     },
     {
-      duration: 10,
+      duration: Math.floor(Math.random() * 3000),
       ease: "linear",
       // Esta función se llama cuando la animación será terminada
-      // Si el coche aun no ha llegado a la linea de meta, vuelve a llamar
-      // la misma funcion. Estamos aplicando recursividad.
       // Si ya el coche ha llegado a la linea de meta, añadimos el coche al tablón
       done: function () {
-        if (parseInt($(this).css("margin-left")) < lineaDeMeta - 100) {
-          moverCoche(this);
-        } else {
           aniadirAlTablon(this);
-          console.log({
-            posicionTablon,
-            cochesL: coches.length + 1,
-            nombre: $(this).data("nombre"),
-          });
           posicionTablon++;
           if (posicionTablon === coches.length + 1) {
             toggleTablon();
           }
-        }
       },
     }
   );
@@ -149,14 +136,14 @@ function reiniciar() {
   // Movemos los coches reseateando el margen izquierdo
   $(".coche").each(function () {
     $(this).stop();
-    $(this).css("margin-left", 0);
+    $(this).animate({
+      marginLeft: 0
+    }, {
+      duration: 300
+    })
   });
-  // Vaciamos el array de coches
-  coches = [];
   // Configuramos la primera posición del tablón
   posicionTablon = 1;
-  // Cambiamos el valor del select a 1
-  $("#numCoches").val(1).change();
   // Reactivamos el select
   toggleSeleccion();
   // Vaciamos el tablón
